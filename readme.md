@@ -21,13 +21,13 @@ To get started with the exercises, follow these steps:
 1. Clone the repository to your local machine using the following command:
 
     ```bash
-    git clone https://github.com/UniversityOfHelsinkiCS/fullstackopen-exercises.git
+    git clone https://github.com/reshaditiya/fullstackopen.git
     ```
 
 2. Change into the cloned directory:
 
     ```bash
-    cd fullstackopen-exercises
+    cd fullstackopen
     ```
 
 3. Install the required dependencies for each part of the course. Detailed instructions are provided within each part's directory.
@@ -46,12 +46,14 @@ The Full Stack Open course is divided into multiple parts, each covering differe
 -   Part 3: Programming a Server with Node.js and Express
 -   Part 4: Testing Express Servers, User Administration
 -   Part 5: Testing React Apps
--   Part 6: State Management with Redux
+-   Part 6: Advanced state management
 -   Part 7: React Router, Custom Hooks, Styling App with CSS and webpack
 -   Part 8: GraphQL
 -   Part 9: TypeScript
 -   Part 10: React Native
 -   Part 11: CI/CD
+-   Part 12: Containers
+-   Part 13: Using relational databases
 
 Each part contains its own set of exercises and exercises, building upon the concepts covered in previous parts.
 
