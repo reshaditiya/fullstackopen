@@ -1,6 +1,6 @@
-# Full Stack Open Assignment Repository
+# Full Stack Open Exercise Repository
 
-This repository contains the assignments for the course "Full Stack Open" offered by the University of Helsinki. The course is designed to teach full stack web development using modern technologies. The official website for the course can be accessed at [fullstackopen.com](https://fullstackopen.com).
+This repository contains the exercises for the course "Full Stack Open" offered by the University of Helsinki. The course is designed to teach full stack web development using modern technologies. The official website for the course can be accessed at [fullstackopen.com](https://fullstackopen.com).
 
 ## Table of Contents
 
@@ -12,27 +12,27 @@ This repository contains the assignments for the course "Full Stack Open" offere
 
 ## Introduction
 
-The Full Stack Open assignment repository serves as a central hub for all the coding exercises and projects assigned during the course. It is organized into various parts, each focusing on different aspects of full stack web development, such as React, Node.js, databases, and more.
+The Full Stack Open exercise repository serves as a central hub for all the coding exercises and projects assigned during the course. It is organized into various parts, each focusing on different aspects of full stack web development, such as React, Node.js, databases, and more.
 
 ## Getting Started
 
-To get started with the assignments, follow these steps:
+To get started with the exercises, follow these steps:
 
 1. Clone the repository to your local machine using the following command:
 
     ```bash
-    git clone https://github.com/UniversityOfHelsinkiCS/fullstackopen-assignments.git
+    git clone https://github.com/reshaditiya/fullstackopen.git
     ```
 
 2. Change into the cloned directory:
 
     ```bash
-    cd fullstackopen-assignments
+    cd fullstackopen
     ```
 
 3. Install the required dependencies for each part of the course. Detailed instructions are provided within each part's directory.
 
-4. Complete the assignments and exercises according to the instructions provided in the respective directories.
+4. Complete the exercises and exercises according to the instructions provided in the respective directories.
 
 5. Submit your solutions as per the guidelines provided in the course material.
 
@@ -46,18 +46,20 @@ The Full Stack Open course is divided into multiple parts, each covering differe
 -   Part 3: Programming a Server with Node.js and Express
 -   Part 4: Testing Express Servers, User Administration
 -   Part 5: Testing React Apps
--   Part 6: State Management with Redux
+-   Part 6: Advanced state management
 -   Part 7: React Router, Custom Hooks, Styling App with CSS and webpack
 -   Part 8: GraphQL
 -   Part 9: TypeScript
 -   Part 10: React Native
 -   Part 11: CI/CD
+-   Part 12: Containers
+-   Part 13: Using relational databases
 
-Each part contains its own set of assignments and exercises, building upon the concepts covered in previous parts.
+Each part contains its own set of exercises and exercises, building upon the concepts covered in previous parts.
 
 ## Contributing
 
-Contributions to the Full Stack Open assignment repository are welcome. If you discover any issues or improvements that can be made, please open an issue or submit a pull request on the GitHub repository.
+Contributions to the Full Stack Open exercise repository are welcome. If you discover any issues or improvements that can be made, please open an issue or submit a pull request on the GitHub repository.
 
 ## License
 
