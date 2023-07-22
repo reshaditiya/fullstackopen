@@ -1,4 +1,4 @@
-export function DataDisplay({ persons, keyword }) {
+export function DataDisplay({ persons, keyword, handleDelete }) {
 	return (
 		<>
 			<h2>Numbers</h2>
@@ -12,7 +12,10 @@ export function DataDisplay({ persons, keyword }) {
 					})
 					.map((person) => (
 						<li key={person.number}>
-							{person.name} {person.number}
+							{person.name} {person.number}{" "}
+							<button onClick={() => handleDelete(person.id)}>
+								Delete
+							</button>
 						</li>
 					))}
 			</ul>

@@ -2,42 +2,77 @@ import { useState, useEffect } from "react"
 import { SearchField } from "./components/SearchField"
 import { DataForm } from "./components/DataForm"
 import { DataDisplay } from "./components/DataDisplay"
-import axios from "axios"
+import personService from "./services/personService"
 
 const App = () => {
+	const emptyPerson = { name: "", number: "" }
 	const [persons, setPersons] = useState([])
-	const [newPerson, setNewPerson] = useState({ name: "", number: "" })
+	const [newPerson, setNewPerson] = useState(emptyPerson)
 	const [keyword, setKeyword] = useState("")
 
-	function handleSubmit(e) {
-		e.preventDefault()
+	function handleSubmit(event) {
+		event.preventDefault()
+		const person = getPerson(newPerson.name)
 
-		if (isNameExist(newPerson.number)) {
-			alert(`${newPerson.number} is already added to phonebook`)
+		if (person) {
+			const confirm = window.confirm(
+				`Do you want to update ${newPerson.name} number?`
+			)
+			if (confirm) {
+				personService
+					.put(person.id, newPerson)
+					.then((response) => {
+						setPersons((prev) =>
+							prev.map((prevPerson) =>
+								prevPerson.id === person.id
+									? response.data
+									: prevPerson
+							)
+						)
+						setNewPerson(emptyPerson)
+					})
+					.catch((error) => console.log(error))
+			}
 		} else {
-			setPersons((prev) => prev.concat(newPerson))
-			setNewPerson({ name: "", number: "" })
+			personService
+				.post(newPerson)
+				.then((response) => {
+					setPersons((prev) => prev.concat(response.data))
+					setNewPerson(emptyPerson)
+				})
+				.catch((error) => console.log(error))
 		}
 	}
 
-	function isNameExist(number) {
-		return persons.find((person) => person.number === number)
+	function getPerson(name) {
+		return persons.find((person) => person.name === name)
+	}
+
+	function getAllPerson() {
+		personService
+			.getAll()
+			.then((response) => setPersons(response.data))
+			.catch((error) => error)
+	}
+
+	function handleDelete(id) {
+		const confirm = window.confirm(
+			"Are you sure you want to delete the person?"
+		)
+		if (confirm) {
+			personService
+				.remove(id)
+				.then(() =>
+					setPersons((prev) =>
+						prev.filter((person) => person.id !== id)
+					)
+				)
+				.catch((error) => console.log(error))
+		}
 	}
 
 	useEffect(() => {
-		async function getPersons() {
-			try {
-				const persons = (
-					await axios.get("http://localhost:3001/persons")
-				).data
-
-				setPersons(persons)
-			} catch (error) {
-				console.log("Error getting person data: ", error)
-			}
-		}
-
-		getPersons()
+		getAllPerson(setPersons)
 	}, [])
 
 	return (
@@ -49,7 +84,11 @@ const App = () => {
 				setNewPerson={setNewPerson}
 				handleSubmit={handleSubmit}
 			/>
-			<DataDisplay persons={persons} keyword={keyword} />
+			<DataDisplay
+				persons={persons}
+				keyword={keyword}
+				handleDelete={handleDelete}
+			/>
 		</div>
 	)
 }
