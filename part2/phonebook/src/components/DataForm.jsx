@@ -1,4 +1,4 @@
-export function DataForm({ newPerson, setNewPerson, handleSubmit }) {
+export default function DataForm({ newPerson, setNewPerson, handleSubmit }) {
 	return (
 		<form>
 			<div>

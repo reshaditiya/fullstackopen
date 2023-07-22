@@ -1,4 +1,4 @@
-export function DataDisplay({ persons, keyword, handleDelete }) {
+export default function DataDisplay({ persons, keyword, handleDelete }) {
 	return (
 		<>
 			<h2>Numbers</h2>

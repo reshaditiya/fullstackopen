@@ -1,4 +1,4 @@
-export function SearchField({ keyword, setKeyword }) {
+export default function SearchField({ keyword, setKeyword }) {
 	return (
 		<div>
 			filter shown with{" "}

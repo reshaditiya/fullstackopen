@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react"
-import { SearchField } from "./components/SearchField"
-import { DataForm } from "./components/DataForm"
-import { DataDisplay } from "./components/DataDisplay"
+import { SearchField, DataForm, DataDisplay, Notification } from "./components"
 import personService from "./services/personService"
 
 const App = () => {
 	const emptyPerson = { name: "", number: "" }
+	const emptyNotification = { message: "", error: false }
 	const [persons, setPersons] = useState([])
 	const [newPerson, setNewPerson] = useState(emptyPerson)
 	const [keyword, setKeyword] = useState("")
+	const [notification, setNotification] = useState(emptyNotification)
 
 	function handleSubmit(event) {
 		event.preventDefault()
@@ -29,15 +29,30 @@ const App = () => {
 									: prevPerson
 							)
 						)
+						setNotification({
+							message: `Update ${person.name}`,
+							error: false,
+						})
 						setNewPerson(emptyPerson)
 					})
-					.catch((error) => console.log(error))
+					.catch((error) => {
+						console.log(error)
+						setNotification({
+							message: `Something wrong happen, try again`,
+							error: true,
+						})
+						getAllPerson()
+					})
 			}
 		} else {
 			personService
 				.post(newPerson)
 				.then((response) => {
 					setPersons((prev) => prev.concat(response.data))
+					setNotification({
+						message: `Added ${response.data.name}`,
+						error: false,
+					})
 					setNewPerson(emptyPerson)
 				})
 				.catch((error) => console.log(error))
@@ -62,22 +77,44 @@ const App = () => {
 		if (confirm) {
 			personService
 				.remove(id)
-				.then(() =>
+				.then(() => {
+					setNotification({
+						message: `Deleted ${
+							persons.find((person) => person.id === id).name
+						}`,
+						error: false,
+					})
 					setPersons((prev) =>
 						prev.filter((person) => person.id !== id)
 					)
-				)
-				.catch((error) => console.log(error))
+				})
+				.catch((error) => {
+					console.log(error)
+					setNotification({
+						message: `Something wrong happen, try again`,
+						error: true,
+					})
+					getAllPerson()
+				})
 		}
 	}
 
 	useEffect(() => {
 		getAllPerson(setPersons)
 	}, [])
+	useEffect(() => {
+		if (notification)
+			setTimeout(() => {
+				setNotification(emptyNotification)
+			}, 4000)
+	}, [notification])
 
 	return (
 		<div>
 			<h2>Phonebook</h2>
+			{notification.message && (
+				<Notification notification={notification} />
+			)}
 			<SearchField keyword={keyword} setKeyword={setKeyword} />
 			<DataForm
 				newPerson={newPerson}
