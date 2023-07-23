@@ -32,10 +32,6 @@ To get started with the exercises, follow these steps:
 
 3. Install the required dependencies for each part of the course. Detailed instructions are provided within each part's directory.
 
-4. Complete the exercises and exercises according to the instructions provided in the respective directories.
-
-5. Submit your solutions as per the guidelines provided in the course material.
-
 ## Course Structure
 
 The Full Stack Open course is divided into multiple parts, each covering different topics. The repository is organized into directories corresponding to these parts. Here is an overview of the course structure:
