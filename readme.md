@@ -51,7 +51,7 @@ The Full Stack Open course is divided into multiple parts, each covering differe
 -   Part 12: Containers
 -   Part 13: Using relational databases
 
-Each part contains its own set of exercises and exercises, building upon the concepts covered in previous parts.
+Each part contains its own set of exercises, building upon the concepts covered in previous parts.
 
 ## Contributing
 
