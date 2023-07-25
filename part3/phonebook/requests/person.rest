@@ -1,12 +1,13 @@
-DELETE http://localhost:3001/api/persons/1
+
+GET https://rsh-fullstackopen-phonebook.fly.dev/api/persons
 
 ###
-GET http://localhost:3001/api/persons
-
-###
-POST http://localhost:3001/api/persons HTTP/1.1
+POST https://rsh-fullstackopen-phonebook.fly.dev/api/persons HTTP/1.1
 content-type: application/json
 
 {
   "name": "test", "number": "123"
 }
+
+###
+DELETE https://rsh-fullstackopen-phonebook.fly.dev/api/persons/1

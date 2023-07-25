@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost/api/persons'
+const baseUrl = '/api/persons'
 
 function post(newPerson) {
 	return axios.post(baseUrl, newPerson)
