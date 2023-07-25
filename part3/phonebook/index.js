@@ -2,9 +2,14 @@ let persons = require('./data/persons.js')
 const currentTime = require('./data/currentTime.js')
 
 const express = require('express')
+const morgan = require('morgan')
 const app = express()
 
 app.use(express.json())
+morgan.token('body', (req) => JSON.stringify(req.body))
+app.use(
+	morgan(':method :url :status :res[content-length] - :response-time ms :body')
+)
 
 app.post('/api/persons', (request, response) => {
 	const id = Math.max(...persons.map((person) => person.id)) + 1 ?? 0
